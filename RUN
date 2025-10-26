@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# student testing script
+#
+
+f=1
+while [ -f stdout.$f ]
+do
+	echo Running test $f
+	./mtest$f > mtest-out.$f
+	echo cmp stdout.$f mtest-out.$f
+	cmp stdout.$f mtest-out.$f
+	f=`expr $f + 1`
+done
