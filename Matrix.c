@@ -112,3 +112,39 @@ void mat_init(Matrix mat, const float data[]){
 }
 
 
+/**
+ * mat_duplicate( const Matrix mat ) -> this function will clone the matrix that was pased making a new copy.
+ *
+ * @param mat -> the matrix that we have to duplicate
+ * @return matrix pointer to the new matrix created
+ */
+Matrix mat_duplicate(const Matrix mat){
+	if (mat == NULL){ //if the matrix is empty or null you will just return NULL for the copy
+		return NULL;
+	}
+
+	else{
+		Matrix newCopy = mat_create(mat->rows, mat->cols);//creating the newCopy matrix which is passed in with the rows and cols of the orginal matrix
+		if (newCopy == NULL){// if the copy ends up being empty you will just return null
+			return NULL;
+		}
+		else{
+			//looping through the rows and cols in order to set all of indexs in the newCopy to the corresponding index in the orginal matrix
+			for(size_t row = 0; row < mat->rows; row++){
+				for(size_t col = 0; col < mat->cols; col++){
+					size_t index = row * mat->cols + col;
+					newCopy->data[index] = mat->data[index];
+				}
+			}
+		}
+	}
+	return newCopy; // returing the copied matrix that we made
+}
+
+
+
+
+
+
+
+
