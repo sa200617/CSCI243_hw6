@@ -24,7 +24,7 @@ struct matrix_st{
  * @ return pointer to new matrix
  */
 
-Matrix mat_create(size_t row, size_t cols){
+Matrix mat_create(size_t rows , size_t cols){
 
 	Matrix mat;// declaring the pointer that is storing the matrix
 	size_t sizeStruct = sizeof(struct matrix_st); // this is calculating the size of the struct
@@ -39,20 +39,20 @@ Matrix mat_create(size_t row, size_t cols){
 	mat -> cols = cols;
 
 	// this allocates the memory for the data araray
-	mat -> data = calloc (row * col, sizeof(float));
+	mat -> data = calloc (rows * cols, sizeof(float));
 	// if the allocation of the matrix data fails will return null
-	if (mat -> data = NULL){
+	if (mat -> data == NULL){
 		free(mat);
 		return NULL;
 	}
 
 	// if we have a square matrix this function will return the identity matrix, square matrix are those whose cols and rows are the same
-	if (rows = cols){
+	if (rows == cols){
 		// looping through the rows and cols to change what is inside the 1D array
 		for (size_t row = 0; row < rows; row++){
 			for (size_t col = 0; col < cols; col++){
 				// if the row number is equal to the column num -> (2,2) or (1,1)
-				if (row = col){
+				if (row == col){
 					// going to that place in the 1D array and setting that to one
 					mat->data[row*cols + col] = 1.0;
 				//then the rest of the data will be set to 0
@@ -72,4 +72,21 @@ Matrix mat_create(size_t row, size_t cols){
 	}
 	return mat;// returning the pointer to the new matrix
 }
+
+/**
+ * mat_destroy(Matrix mat) ->  this function is responsible for freeing all memory assosiated with the
+ * Matrix that was created using mat_create(). This function will not let the Matrix pointer to be used.
+
+ * @param mat -> the matrix that should be destroyed.
+ */
+
+void mat_destroy(Matrix mat){
+	if( !mat){ // if the mat is null and doesn't have anything you just return that
+		return;
+	}else{ // if the mat has data you first start by freeing the mat data and then you free the mat itself after
+		free(mat-> data);
+		free(mat);
+	}
+}
+
 
