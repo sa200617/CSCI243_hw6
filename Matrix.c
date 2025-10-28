@@ -141,10 +141,32 @@ Matrix mat_duplicate(const Matrix mat){
 	return newCopy; // returing the copied matrix that we made
 }
 
+/**
+ * mat_equals(m1,m2) -> this function will check is two matrices that are passed in are equal to one another,
+ * by checking if the sizes of the matrices are the same, and then checking if every index of the data of both
+ * are equal to each other.
+ *
+ * @param const Matrix m1 -> the first matrix passed to check
+ * @param const Matrix m2 -> the second matrix to check to compare to first
+ * @return bool true/false -> representing if both matrixs are equal or not
+ */
+bool mat_equals(const Matrix m1, const Matrix m2){
+	if (m1 == NULL || m2 == NULL){ // if both the matrix are null return false
+		return false;
+	}
 
+	if ( m1->rows != m2->rows || m1->cols != m2->cols){ // if the cols and rows of both the matrix's don't match return false
+		return false;
+	}
 
-
-
-
-
-
+	// looping through the rows and cols of m1 in order to acess the elements of that array
+	for (size_t row = 0; row < m1->rows; row++){
+		for(size_t col = 0; col < m1->cols; col++){
+			size_t index = row * m1->cols + col;
+			if (m1->data[index] != m2->data[index]){ // if any of the index's of m1 and m2 are not equal to each other return false
+				return false;
+			}
+		}
+	}
+	return true; // both matrices are equal returning true
+}
