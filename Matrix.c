@@ -9,7 +9,7 @@
  * rows and columns that store the float data.
  */
 struct matrix_st{
-	size_t row; // number of rows in the matrix
+	size_t rows; // number of rows in the matrix
 	size_t cols;// number of columns in the matrix
 	float *data; // pointer to the dynamically stored data
 }
@@ -86,6 +86,28 @@ void mat_destroy(Matrix mat){
 	}else{ // if the mat has data you first start by freeing the mat data and then you free the mat itself after
 		free(mat-> data);
 		free(mat);
+	}
+}
+
+/**
+ * mat_init(Matix mat, const float data[]) -> this function will fill the matrix with values from the flat
+ * array of data[] pased into the function. Basically in charge of loading the matrix with decided values pased in.
+ *
+ * @param Matrix mat -> matrix that must filled and loaded up
+ * @param const float data[] -> array with the data that must be filled into the matrix
+ */
+void mat_init(Matrix mat, const float data[]){
+
+	if (mat == NULL || data == NULL){// checking if both the matix and the data is null then returning an empty
+		return;
+	}
+
+	// looping through the rows and cols of the mat to acess the specific elements stored in the array
+	for(size_t row = 0; row < mat->rows; row++){
+		for(size_t col = 0; col < mat->cols; col++){
+			size_t index = row * mat->cols + col;
+			mat->data[index] = data[index];// updating the mat with the data at the same index by setting both mat index equal to the element stored in that index for data
+		}
 	}
 }
 
