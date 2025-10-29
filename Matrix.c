@@ -170,3 +170,32 @@ bool mat_equals(const Matrix m1, const Matrix m2){
 	}
 	return true; // both matrices are equal returning true
 }
+/**
+ * mat_scalar_mult(Matrix mat, float data) -> this function will perform the scalor multiplication of all of the elements of
+ * mat with the value for float data that is pased inside the function. It will mutuate and change each value by a const.
+ *
+ * @param Matrix mat -> this is the matrix that will be multiplied
+ * @param float data -> this is the const that you are going to multiply with.
+ */
+void mat_scalar_mult( Matrix mat, float data ){
+	// if the matrix we passed in is null we have nothing to do so just return
+	if (mat ==  NULL){
+		return;
+	}
+
+	else{
+		//looping through the rows and cols of the mat
+		for(size_t row = 0; row < mat->rows; row++){
+			for(size_t col =0; col < mat->cols;col++){
+				size_t index = row * mat-> cols + col;// this fun is going to the correct index in the array
+				float oldVal = mat->data[index];// here we are storing the old value
+				float newVal = oldVal * data; // here we are storing the new value updated after multiplied by the scalor
+				mat->data[index] = newVal; // now we are updating the value in the mat with the new value calculated
+			}
+		}
+	}
+}
+
+Matrix mat_mult( const Matrix m1, const Matrix m2 ){
+	
+}
