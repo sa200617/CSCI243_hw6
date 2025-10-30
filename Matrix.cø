@@ -260,7 +260,5 @@ Status mat_get_cell( const Matrix mat, float *data, size_t row, size_t col ){
 	}
 	if ( row >= mat->rows || col >= mat->cols){
 		return FAILTURE;
-	}	
+	}
 
-
-}

@@ -195,72 +195,25 @@ void mat_scalar_mult( Matrix mat, float data ){
 		}
 	}
 }
-/**
- * mat_mult(const Matrix m1, const Matrix m2) -> takes two matrices and performs matrix multiplication with
- * ,the requriement for matrix multiplication is that the number of cols in m1 must be equal to the rows in
- * m2. If that condition is met true the matrix multuplication is newMatrix[row][col] = sum(m1[row][c] * m2[c]
- * [col]).
- *
- * @param m1 -> one the matrix being multiplied
- * @param m2 -> the other matrix multiplied
- * @return newMatrix -> this is a new matrix that has the m1*m2 matrix, returning NULL if the intial condition
- * to perform matrix multiplication is not passed/
- */
+
 Matrix mat_mult( const Matrix m1, const Matrix m2 ){
-	if (m1==NULL || m2 == NULL){ // if both of matrixes are NULL return NULL
+	if (m1==NULL || m2 == NULL){
 		return NULL;
 	}
 
-	if(m1->cols != m2->rows ){ // if the cols of M1 is not equal to the rows of M2 return NULL
-		return NULL;
+	if(m1->cols != m2->rows ){
+		return false;
 	}
 
-	Matrix newMatrix = mat_create(m1->rows, m2-> cols);// creating a brand new matrix to hold the multiplication
+	Matrix newMatrix = mat_create(m1->rows, m2-> cols);
 	if (newMatrix == NULL){
 		return NULL;
 	}
 	else{
-		// looping through the rows and colums of the new matrix to update and add values
 		for(size_t row = 0; row < m1->rows; row++){
 			for (size_t col = 0; col < m2->cols; col++){
-				float total = 0.0f;// creating acculator to store total
-				for(size_t c =0; c < m1->cols; c++){//computing the dot product from m1 and the column from m2 
-
-					int indexM1 = row *m1->cols + c;//index value of m1
-					float valM1 = m1->data[indexM1];// value of m2
-
-					int indexM2 = c *  m2->cols + col;//index value of m2
-					float valM2 = m2->data[indexM2]; // value of m2
-
-					total += valM1 * valM2;// adding the product of those values into the accumelator total
-				}
-			newMatrix->data[row * newMatrix->cols + col] = total;// storing that total value into the matrix
-			}
-		}
-	}
-	return newMatrix;// returning the product matrix that we made
+				float total = 0.0f;
+				for(size_t c =0; c < m1->cols; c++){
+					total+=
 }
 
-/**
- * mat_get_cell -> returns the contents of the cell that is at the specific row and column of the mat that is passed in
- *
- * @param mat -> this the matrix you are reading from in order to get data.
- * @param float *data -> pointer to a float where we will store the cells infomation
- * @param row -> this is the index of the row you want to get
- * @param col -> this is the desired col index
- *
- * @return Status -> returns a static code checking if value was receieved or not received correctly. The status
- * will fail if the matrix is NULL, data pointer is NULL, or the matrix values are out of range. 
- *
- */
-Status mat_get_cell( const Matrix mat, float *data, size_t row, size_t col ){
-
-	if(mat == NULL || data == NULL){
-		return FAILURE;
-	}
-	if ( row >= mat->rows || col >= mat->cols){
-		return FAILTURE;
-	}	
-
-
-}
