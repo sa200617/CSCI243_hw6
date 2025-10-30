@@ -15,6 +15,15 @@ struct matrix_st{
 }
 
 /**
+ * enum-> this is my emun representing the possible outcomes of matrix
+ * opperations if they are failure or they are correct.
+ */
+typedef enum{
+	SUCCESS,// opperation completed sucessfully and executed
+	FAILURE // opperation failed in the process
+} Status;
+
+/**
  * mat_create(row,col) -> this function creates a new matrix, given
  * the rows and columns. If the matrix is a square it is intialized as
  * an identity matrix, but if not it is initialized as a zero matrix.
@@ -250,17 +259,20 @@ Matrix mat_mult( const Matrix m1, const Matrix m2 ){
  * @param col -> this is the desired col index
  *
  * @return Status -> returns a static code checking if value was receieved or not received correctly. The status
- * will fail if the matrix is NULL, data pointer is NULL, or the matrix values are out of range. 
+ * will fail if the matrix is NULL, data pointer is NULL, or the matrix values are out of range.
  *
  */
 Status mat_get_cell( const Matrix mat, float *data, size_t row, size_t col ){
 
+	// this will return failure if the mat is NULL or if the data is null
 	if(mat == NULL || data == NULL){
 		return FAILURE;
 	}
+	// this will return FAILURE, if the cols and rows that are passed into the function are our of bounds
 	if ( row >= mat->rows || col >= mat->cols){
 		return FAILTURE;
-	}	
-
-
+	}
+	size_t index = row * mat->cols + col;// computing the index
+	*data = mat->data[index];// storing the mat data value to the pointer
+	return SUCCESS;// returning sucess
 }
