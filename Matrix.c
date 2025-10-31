@@ -14,14 +14,7 @@ struct matrix_st{
 	float *data; // pointer to the dynamically stored data
 }
 
-/**
- * enum-> this is my emun representing the possible outcomes of matrix
- * opperations if they are failure or they are correct.
- */
-typedef enum{
-	SUCCESS,// opperation completed sucessfully and executed
-	FAILURE // opperation failed in the process
-} Status;
+
 
 /**
  * mat_create(row,col) -> this function creates a new matrix, given
@@ -138,16 +131,15 @@ Matrix mat_duplicate(const Matrix mat){
 			return NULL;
 		}
 		else{
-			//looping through the rows and cols in order to set all of indexs in the newCopy to the corresponding index in the orginal matrix
-			for(size_t row = 0; row < mat->rows; row++){
+			//looping through the rows and cols in order to set all of indexs in the newCopy to the corresponding index in the orginal matrix			for(size_t row = 0; row < mat->rows; row++){
 				for(size_t col = 0; col < mat->cols; col++){
 					size_t index = row * mat->cols + col;
 					newCopy->data[index] = mat->data[index];
 				}
 			}
 		}
+		 return newCopy; // returing the copied matrix that we made
 	}
-	return newCopy; // returing the copied matrix that we made
 }
 
 /**
@@ -294,7 +286,7 @@ Status mat_get_row( const Matrix mat, float data[], size_t row){
 		return FAILURE;
 	}
 	// if the row is out of the valid index set you would return failurre
-	if (row >=  mat->rows)[
+	if (row >=  mat->rows){
 		return FAILURE;
 	}
 	else{
@@ -403,7 +395,7 @@ Matrix mat_transpose( const Matrix mat ){
  * @param Matrix mat -> matrix passed in that is printed.
  * @param FILE stream -> pointer to the file stream
  */
-void mat_print( const Matrix mat, FILE *stream; ){
+void mat_print( const Matrix mat, FILE *stream){
 
 	// if the mat is NULL it will print an error in the stream
 	if (mat == NULL || stream == NULL){
