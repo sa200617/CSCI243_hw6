@@ -395,29 +395,8 @@ Matrix mat_transpose( const Matrix mat ){
 	}
 	return trans;// returning the trans
 }
-/**
- * mat_print -> this function is reponsible for printing out the matrix
- * in to the steam, using the matrix that is provided. Prints the row and
- * col numbers and then the matrix cell by cell.
- *
- * @param Matrix mat -> matrix passed in that is printed.
- * @param FILE stream -> pointer to the file stream
- */
-void mat_print( const Matrix mat, FILE *stream; ){
 
-	// if the mat is NULL it will print an error in the stream
-	if (mat == NULL || stream == NULL){
-		fprintf(stderr ,"Error: matrix is NULL\n");
-		return;
-	}
-	else{
-		// printing out the rows by cols at the top of the matrix
-		fprintf(stream, "%zu rows. %zu columns:\n", mat-> rows, mat->cols);
-		for (size_t row = 0; row < mat->rows; row++){
-			for(size_t col = 0; col < mat->cols; col++){
-				size_t index = row * mat->cols + col;// getting the index of one cell
-				fprintf(stream, "%8.3f", mat->data[index]);// printing the cell
-			}
-			fprintf(stream ,"\n");
-		}
-}
+/**
+ *
+ */
+
