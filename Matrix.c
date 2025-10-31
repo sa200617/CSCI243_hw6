@@ -322,7 +322,7 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 	if (row >=  mat->rows){
 		return BadRowNumber;
 	}
-	if (row >= mat->cols){
+	if (col >= mat->cols){
 		return BadColNumber;
 	}
 	else{
