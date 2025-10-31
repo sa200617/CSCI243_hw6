@@ -259,15 +259,15 @@ Status mat_get_cell( const Matrix mat, float *data, size_t row, size_t col ){
 
 	// this will return failure if the mat is NULL or if the data is null
 	if(mat == NULL || data == NULL){
-		return FAILURE;
+		return BadRowNumber;
 	}
 	// this will return FAILURE, if the cols and rows that are passed into the function are our of bounds
-	if ( row >= mat->rows || col >= mat->cols){
-		return FAILURE;
+	if ( row >= mat->rows ){
+		return BadColNumber;
 	}
 	size_t index = row * mat->cols + col;// computing the index
 	*data = mat->data[index];// storing the mat data value to the pointer
-	return SUCCESS;// returning sucess
+	return Success;// returning sucess
 }
 /**
  * mat_get_row -> returns the contents and all the values from a matrix at its specified row.
@@ -284,11 +284,11 @@ Status mat_get_row( const Matrix mat, float data[], size_t row){
 
 	// here basically saying that if the data and mat are NULL return FAILURE
 	if (mat == NULL || data ==  NULL){
-		return FAILURE;
+		return BadRowNumber;
 	}
 	// if the row is out of the valid index set you would return failurre
 	if (row >=  mat->rows){
-		return FAILURE;
+		return BadRowNumber;
 	}
 	else{
 		//here you are looping through the cols of the mat pased in
@@ -297,7 +297,7 @@ Status mat_get_row( const Matrix mat, float data[], size_t row){
 			data[col] = mat->data[index]; // storing inside the data[] array the value receieved from mat with the index
 		}
 	}
-	return SUCCESS;
+	return Success;
 }
 /**
  * mat_set_cell -> this function is responsible for assigning a specific value in the matrix given a
