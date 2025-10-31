@@ -1,0 +1,77 @@
+commit 937ee493f5a80d919e097484bff1f5c4cde89279
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Oct 31 14:35:05 2025 -0400
+
+    finished the print function, and implemented everything and all functions required, now debugging.
+
+commit fff2b87cc1cb5fbc0dfe23b5ac717b63f095a984
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Thu Oct 30 21:45:23 2025 -0400
+
+    Implemented the function mat_set_row which is responsible for setting a whole row in the matrix equal to the elements that are in data array
+
+commit 4bc85c12c6b2cb29cc3b3acf92ab26ff8ae3a723
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Thu Oct 30 21:11:36 2025 -0400
+
+    Implementing the function mat_set_cell which will update a specific cell in the matrix based of the value passed in by the function, and will return SUCCESS or FAILURE if this modification passes or it fails
+
+commit 12b6c6488e5bc8985eafd0b981b2fafdf7f63e21
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Thu Oct 30 20:55:33 2025 -0400
+
+    Finished the function called mat_get_row which is responsiable for getting all the data from a row in the matrix and storing it isnide the data[].
+
+commit 4e633119f67136f71dda4e6423a43d9ded5fccc3
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Thu Oct 30 15:03:09 2025 -0400
+
+    implemented the function mat_get_cell() this function will return either SUCESS or FAILURE based of if there are contents of the specified row and cell in the matrix. Also created the Status public emun
+
+commit 0e9dc3122d0b6a1b8bce5630cc70da6c55c7db7e
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Thu Oct 30 14:44:00 2025 -0400
+
+    created and implemented the mat_mult function will take two matrices m1 and m2 and multiply them using matrix multiplication rule
+
+commit 4b9e509a90cb5969e9740e9b823508c13e81dd49
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Tue Oct 28 21:28:44 2025 -0400
+
+    Here I have fully implemented the function mat_scalor_mult() this is the matrix that is multiplied by the scalor performing scalor multiplication
+
+commit 1cb5afb7255d0cd7c45c0a046f0337f857b8dc12
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Tue Oct 28 15:35:39 2025 -0400
+
+    Intializing and creating the equal function which checks if two matrices are equal to one another or not, if both of them aren't return false else true
+
+commit a16335da3e77ed3f8128df49e12e2da47583c519
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Tue Oct 28 14:44:07 2025 -0400
+
+    Intialized the mat_duplicate function which returns a duplicated new copy of the matrix that is passed into the function, if it errors we will return NULL
+
+commit 89f4ea024e6b3cc990edcbf0f35edffbfdbff461
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Tue Oct 28 13:26:18 2025 -0400
+
+    Implemented the function mat_init() which takes the 1D array pased through and updates the elements of the matrix to contain those elements in the 1D data array
+
+commit 50464f3c2fd2d181229c48df83fe263e3b6d44e3
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Tue Oct 28 13:02:38 2025 -0400
+
+    Implemented the mat_destroy() function which is charge of freeing the space of a matrix that is pased inside the function
+
+commit 08aadcc6fdd5af38785fd5d8b671e4a2b936594b
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Tue Oct 28 12:42:23 2025 -0400
+
+    implemented and created the first function required createMatrix() which returns a pointer to the new Matrix created, either the 0 matrix if we don't have a square matrix or the identity matrix for the square matrix
+
+commit b315b702b2dae5d8defae4bd0a1838cbb99c9c8a
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Sun Oct 26 13:04:54 2025 -0400
+
+    adding all the intial files in order to start working on this assignment
