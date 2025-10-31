@@ -408,7 +408,7 @@ void mat_print( const Matrix mat, FILE *stream){
 	}
 	else{
 		// printing out the rows by cols at the top of the matrix
-		fprintf(stream, "%zu rows. %zu columns:\n", mat-> rows, mat->cols);
+		fprintf(stream, "%zu rows %zu columns:\n", mat-> rows, mat->cols);
 		for (size_t row = 0; row < mat->rows; row++){
 			for(size_t col = 0; col < mat->cols; col++){
 				size_t index = row * mat->cols + col;// getting the index of one cell
