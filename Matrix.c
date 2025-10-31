@@ -352,9 +352,6 @@ Status mat_set_row( Matrix mat, const float data[], size_t row ){
 	if (row >= mat->rows){
 		return BadRowNumber;
 	}
-	if (col >=  mat->cols){
-		return BadColNumber;
-	}
 	else{
 		// looping through the cols of the matrix
 		for(size_t col = 0; col < mat->cols; col++){
