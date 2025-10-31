@@ -316,7 +316,7 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 
 	// this is checking if the mat is NULL and then returning FAILURE
 	if (mat == NULL){
-		return Failure;
+		return ;
 	}
 	// this checking if the mat cell that is passed in is out of bounds then returning FAILURE.
 	if (row >= mat->rows){
