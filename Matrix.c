@@ -319,14 +319,14 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 		return BadRowNumber;
 	}
 	// this checking if the mat cell that is passed in is out of bounds then returning FAILURE.
-	if (row < 1||row > mat->rows){
+	if (row => mat->rows){
 		return BadRowNumber;
 	}
-	if ( col < 1 || col >  mat->cols){
+	if ( col= >  mat->cols){
 		return BadColNumber;
 	}
 	else{
-		size_t index = (row-1) * mat->cols + (col-1); // accessing the index of the mat with the rows and col passed in
+		size_t index = (row) * mat->cols + (col); // accessing the index of the mat with the rows and col passed in
 		mat->data[index] = data;// going into the mat and updating it with the value passed in by the func
 		return Success; // returning success
 	}
@@ -386,7 +386,7 @@ Matrix mat_transpose( const Matrix mat ){
 		for(size_t col = 0; col < mat->cols; col++){
 			size_t index  = (row) * mat->cols + (col);// storing the index of the orginal matrix
 			float value = mat->data[index];
-			mat_set_cell(trans, value, col+1,row+1);
+			mat_set_cell(trans, value, col,row);
 		}
 	}
 	return trans;// returning the trans
