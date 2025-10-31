@@ -327,7 +327,7 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 	}
 	else{
 		size_t index = (row-1) * mat->cols + (col-1); // accessing the index of the mat with the rows and col passed in
-		*data = mat->data[index];// going into the mat and updating it with the value passed in by the func
+		mat->data[index] = data;// going into the mat and updating it with the value passed in by the func
 		return Success; // returning success
 	}
 }
