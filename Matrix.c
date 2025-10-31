@@ -316,16 +316,19 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 
 	// this is checking if the mat is NULL and then returning FAILURE
 	if (mat == NULL){
-		return FAILURE;
+		return BadRowNumber;
 	}
 	// this checking if the mat cell that is passed in is out of bounds then returning FAILURE.
-	if (row >=  mat->rows || col >=  mat->cols){
-		return FAILURE;
+	if (row >=  mat->rows){
+		return BadRowNumber;
+	}
+	if (row >= mat->cols){
+		return BadColNumber;
 	}
 	else{
 		size_t index = row * mat->cols + col; // accessing the index of the mat with the rows and col passed in
 		mat->data[index] = data;// going into the mat and updating it with the value passed in by the func
-		return SUCCESS; // returning success
+		return Success; // returning success
 	}
 }
 /**
@@ -343,11 +346,11 @@ Status mat_set_row( Matrix mat, const float data[], size_t row ){
 
 	// Return failure if the data or the matrix is NULL.
 	if (mat == NULL || data == NULL){
-		return FAILURE;
+		return BadRowNumber;
 	}
 	// Return Failure if the row pased in is out of bounds
 	if (row >= mat->rows){
-		return FAILURE;
+		return BadRowNumber;
 	}
 	else{
 		// looping through the cols of the matrix
@@ -355,7 +358,7 @@ Status mat_set_row( Matrix mat, const float data[], size_t row ){
 			size_t index = row * mat->cols + col;// finding out the index we are at
 			mat->data[index] = data[col]; // updating that matrix index with the data index
 		}
-		return SUCCESS; // return SUCCESS
+		return Success; // return SUCCESS
 	}
 }
 /**
