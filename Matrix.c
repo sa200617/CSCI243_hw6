@@ -319,10 +319,10 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 		return BadRowNumber;
 	}
 	// this checking if the mat cell that is passed in is out of bounds then returning FAILURE.
-	if (row => mat->rows){
+	if (row >= mat->rows){
 		return BadRowNumber;
 	}
-	if ( col= >  mat->cols){
+	if ( col >=  mat->cols){
 		return BadColNumber;
 	}
 	else{
