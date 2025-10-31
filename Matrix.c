@@ -335,3 +335,34 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 		return SUCCESS; // returning success
 	}
 }
+/**
+ * mat_set_row -> this function is responsible for assigning an entire row in a matrix from an array.
+ *
+ * @param mat -> this is the matrix we need to modify
+ * @param data -> array with the values that you have to assign to the specific row.
+ * @param row -> the row that you have to modify
+ *
+ * @return Status of the opperation ->
+ *        Success if the whole row was updated
+ *        Failure if the row failed to update bc the matrix or data was null or the row was out of bound.
+ */
+Status mat_set_row( Matrix mat, const float data[], size_t row ){
+
+	// Return failure if the data or the matrix is NULL.
+	if (mat == NULL || data == NULL){
+		return FAILURE;
+	}
+	// Return Failure if the row pased in is out of bounds
+	if (row >= mat->rows){
+		return FAILURE;
+	}
+	else{
+		// looping through the cols of the matrix
+		for(size_t col = 0; col < mat->cols; col++){
+			size_t index = row * mat->cols + col;// finding out the index we are at
+			mat->data[index] = data[col]; // updating that matrix index with the data index
+		}
+		return SUCCESS; // return SUCCESS
+	}
+}
+
