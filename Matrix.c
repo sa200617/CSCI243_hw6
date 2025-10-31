@@ -306,4 +306,32 @@ Status mat_get_row( const Matrix mat, float data[], size_t row){
 	}
 	return SUCCESS;
 }
+/**
+ * mat_set_cell -> this function is responsible for assigning a specific value in the matrix given a
+ * specific cell and a float data num to change it to.
+ *
+ * @param mat -> the matrix passed in that you want to update
+ * @param data -> the value you are going to assign that specific cell
+ * @param row -> the row index of the element that you want to update.
+ * @param col -> the column index of the element that you want to update
+ *
+ * @return -> Status code if the element was updated or not
+ *     Success if the matrix cell was successfully updated.
+ *     Failure if the matrix is null or if the cell pased in is out of bounds in the matrix
+ */
+Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 
+	// this is checking if the mat is NULL and then returning FAILURE
+	if (mat == NULL){
+		return FAILURE;
+	}
+	// this checking if the mat cell that is passed in is out of bounds then returning FAILURE.
+	if (row >=  mat->rows || col >=  mat->cols){
+		return FAILURE;
+	}
+	else{
+		size_t index = row * mat->cols + col; // accessing the index of the mat with the rows and col passed in
+		mat->data[index] = data;// going into the mat and updating it with the value passed in by the func
+		return SUCCESS; // returning success
+	}
+}
