@@ -319,10 +319,10 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 		return BadRowNumber;
 	}
 	// this checking if the mat cell that is passed in is out of bounds then returning FAILURE.
-	if (row == 0 ||row >  mat->rows){
+	if (row >=  mat->rows){
 		return BadRowNumber;
 	}
-	if (col == 0 || col > mat->cols){
+	if ( col >= mat->cols){
 		return BadColNumber;
 	}
 	else{
@@ -384,7 +384,7 @@ Matrix mat_transpose( const Matrix mat ){
 	// looping through the rows and cols of the orginal matrix
 	for (size_t row = 1; row <= mat->rows; row++){
 		for(size_t col = 1; col <= mat->cols; col++){
-			size_t index  = (row-1) * mat->cols + (col - 1);// storing the index of the orginal matrix
+			size_t index  = (row) * mat->cols + (col);// storing the index of the orginal matrix
 			float value = mat->data[index];
 			mat_set_cell(trans, value, col,row);
 		}
