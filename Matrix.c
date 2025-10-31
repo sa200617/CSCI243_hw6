@@ -384,9 +384,9 @@ Matrix mat_transpose( const Matrix mat ){
 	// looping through the rows and cols of the orginal matrix
 	for (size_t row = 0; row < mat->rows; row++){
 		for(size_t col = 0; col < mat->cols; col++){
-			size_t index  = (row) * mat->cols + (col);// storing the index of the orginal matrix
-			float value = mat->data[index];
-			mat_set_cell(trans, value, col,row);
+			size_t orgiIndex = row * mat->cols + col;
+			size_t transIndex = col * trans->cols + row;
+			trans->data[transIndex] = mat->data[orgiIndex];
 		}
 	}
 	return trans;// returning the trans
