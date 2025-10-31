@@ -270,9 +270,40 @@ Status mat_get_cell( const Matrix mat, float *data, size_t row, size_t col ){
 	}
 	// this will return FAILURE, if the cols and rows that are passed into the function are our of bounds
 	if ( row >= mat->rows || col >= mat->cols){
-		return FAILTURE;
+		return FAILURE;
 	}
 	size_t index = row * mat->cols + col;// computing the index
 	*data = mat->data[index];// storing the mat data value to the pointer
 	return SUCCESS;// returning sucess
 }
+/**
+ * mat_get_row -> returns the contents and all the values from a matrix at its specified row.
+ *
+ * @param mat -> the matrix where it reads data from
+ * @param data -> this is the array that will store the values of the row
+ * @param row -> the index of the row to receieve information from
+ *
+ * @return -> this function will return a status code
+ *     Sucess will tell us that the row was sucessfully retrived
+ *     Failure if the matrix is null or row out of range
+ */
+Status mat_get_row( const Matrix mat, float data[], size_t row){
+
+	// here basically saying that if the data and mat are NULL return FAILURE
+	if (mat == NULL || data ==  NULL){
+		return FAILURE;
+	}
+	// if the row is out of the valid index set you would return failurre
+	if (row >=  mat->rows)[
+		return FAILURE;
+	}
+	else{
+		//here you are looping through the cols of the mat pased in
+		for(size_t col = 0; col < mat->cols; col++){
+			size_t index =  row * mat->cols + col; // calculating the index from which to get the data from
+			data[col] = mat->data[index]; // storing inside the data[] array the value receieved from mat with the index
+		}
+	}
+	return SUCCESS;
+}
+
