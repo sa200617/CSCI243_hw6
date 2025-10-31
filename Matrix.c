@@ -263,7 +263,7 @@ Status mat_get_cell( const Matrix mat, float *data, size_t row, size_t col ){
 	}
 	// this will return FAILURE, if the cols and rows that are passed into the function are our of bounds
 	if ( row >= mat->rows ){
-		return BadColNumber;
+		return BadRowNumber;
 	}
 	size_t index = row * mat->cols + col;// computing the index
 	*data = mat->data[index];// storing the mat data value to the pointer
@@ -316,7 +316,7 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 
 	// this is checking if the mat is NULL and then returning FAILURE
 	if (mat == NULL){
-		return ;
+		return BadRowNumber ;
 	}
 	// this checking if the mat cell that is passed in is out of bounds then returning FAILURE.
 	if (row >= mat->rows){
