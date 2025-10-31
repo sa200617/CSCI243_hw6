@@ -382,8 +382,8 @@ Matrix mat_transpose( const Matrix mat ){
 		return NULL;
 	}
 	// looping through the rows and cols of the orginal matrix
-	for (size_t row = 1; row <= mat->rows; row++){
-		for(size_t col = 1; col <= mat->cols; col++){
+	for (size_t row = 0; row < mat->rows; row++){
+		for(size_t col = 0; col < mat->cols; col++){
 			size_t index  = row * mat->cols + col;// storing the index of the orginal matrix
 			size_t transI = col * trans->cols + row;// storing the index of the transpose matrix
 			trans->data[transI] = mat->data[index];// this will basically do the switching and adding to the transpose
