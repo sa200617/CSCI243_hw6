@@ -352,6 +352,9 @@ Status mat_set_row( Matrix mat, const float data[], size_t row ){
 	if (row >= mat->rows){
 		return BadRowNumber;
 	}
+	if (col >=  mat->cols){
+		return BadColNumber;
+	}
 	else{
 		// looping through the cols of the matrix
 		for(size_t col = 0; col < mat->cols; col++){
@@ -382,8 +385,8 @@ Matrix mat_transpose( const Matrix mat ){
 		return NULL;
 	}
 	// looping through the rows and cols of the orginal matrix
-	for (size_t row = 1; row <= mat->rows; row++){
-		for(size_t col = 1; col <= mat->cols; col++){
+	for (size_t row = 0; row <= mat->rows; row++){
+		for(size_t col = 0; col <= mat->cols; col++){
 			size_t index  = (row) * mat->cols + (col);// storing the index of the orginal matrix
 			float value = mat->data[index];
 			mat_set_cell(trans, value, col,row);
