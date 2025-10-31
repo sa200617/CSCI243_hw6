@@ -12,7 +12,7 @@ struct matrix_st{
 	size_t rows; // number of rows in the matrix
 	size_t cols;// number of columns in the matrix
 	float *data; // pointer to the dynamically stored data
-}
+};
 
 
 
@@ -131,7 +131,8 @@ Matrix mat_duplicate(const Matrix mat){
 			return NULL;
 		}
 		else{
-			//looping through the rows and cols in order to set all of indexs in the newCopy to the corresponding index in the orginal matrix			for(size_t row = 0; row < mat->rows; row++){
+			//looping through the rows and cols in order to set all of indexs in the newCopy to the corresponding index in the orginal matrix
+			for(size_t row = 0; row < mat->rows; row++){
 				for(size_t col = 0; col < mat->cols; col++){
 					size_t index = row * mat->cols + col;
 					newCopy->data[index] = mat->data[index];
@@ -412,4 +413,5 @@ void mat_print( const Matrix mat, FILE *stream){
 			}
 			fprintf(stream ,"\n");
 		}
+	}
 }
