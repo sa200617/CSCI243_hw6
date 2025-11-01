@@ -326,7 +326,7 @@ Status mat_set_cell( Matrix mat, float data, size_t row, size_t col ){
 		return BadColNumber;
 	}
 	else{
-		size_t index = (row) * mat->cols + (col); // accessing the index of the mat with the rows and col passed in
+		size_t index = row * mat->cols + col; // accessing the index of the mat with the rows and col passed in
 		mat->data[index] = data;// going into the mat and updating it with the value passed in by the func
 		return Success; // returning success
 	}
@@ -385,7 +385,7 @@ Matrix mat_transpose( const Matrix mat ){
 	for (size_t row = 0; row < mat->rows; row++){
 		for(size_t col = 0; col < mat->cols; col++){
 			size_t orgiIndex = row * mat->cols + col;
-			size_t transIndex = row + col * trans->cols;
+			size_t transIndex = col* mat->rows + row;
 			trans->data[transIndex] = mat->data[orgiIndex];
 		}
 	}
