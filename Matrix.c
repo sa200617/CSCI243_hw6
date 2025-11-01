@@ -385,7 +385,7 @@ Matrix mat_transpose( const Matrix mat ){
 	for (size_t row = 0; row < mat->rows; row++){
 		for(size_t col = 0; col < mat->cols; col++){
 			size_t orgiIndex = row * mat->cols + col;
-			size_t transIndex = col * trans->cols + row;
+			size_t transIndex = row + col * trans->cols;
 			trans->data[transIndex] = mat->data[orgiIndex];
 		}
 	}
